@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="280" viewBox="0 0 500 280">
+
+<g transform="translate(34 18) scale(.98)">
+<defs>
+  <linearGradient id="vp" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#287BFF"/>
+    <stop offset="52%" stop-color="#FFFFFF"/>
+    <stop offset="100%" stop-color="#FFFFFF"/>
+  </linearGradient>
+  <linearGradient id="vp2" x1="0" y1="1" x2="1" y2="0">
+    <stop offset="0%" stop-color="#123CCB"/>
+    <stop offset="100%" stop-color="#FFFFFF"/>
+  </linearGradient>
+</defs>
+<!-- V -->
+<path d="M55 28 H105 L176 166 L207 111 H258 L194 222 H151 Z" fill="#FFFFFF"/>
+<path d="M55 28 L105 28 L176 166 L151 222 Z" fill="#FFFFFF" opacity=".35"/>
+<!-- P, drawn as a continuous angular ribbon -->
+<path d="M225 28 H359 C405 28 432 54 432 91 C432 128 405 153 359 153 H307 L335 108 H359 C372 108 380 102 380 91 C380 80 372 73 359 73 H251 Z" fill="#FFFFFF"/>
+<path d="M307 153 H359 C405 153 432 128 432 91 C432 75 426 61 415 50 L432 91 C432 128 405 153 359 153 Z" fill="#FFFFFF" opacity=".65"/>
+<path d="M225 28 H275 L307 73 H251 Z" fill="#FFFFFF" opacity=".35"/>
+</g>
+</svg>
