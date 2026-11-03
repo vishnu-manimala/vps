@@ -1,0 +1,8 @@
+@if (testimonial(); as quote) {
+  <section class="testimonial" aria-label="Recommendation">
+    <span class="testimonial-mark" aria-hidden="true">“</span>
+    <blockquote>{{ quote.quote }}</blockquote>
+    <p>— {{ quote.name }}, {{ quote.attribution }}</p>
+    <span class="testimonial-note">SHARED WITH PERMISSION</span>
+  </section>
+}

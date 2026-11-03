@@ -1,0 +1,19 @@
+<section class="about-section section-pad" id="about" aria-labelledby="about-heading">
+  <div class="section-wrap about-grid">
+    <div class="about-visual">
+      <div class="about-image" role="img" [attr.aria-label]="story().visualCaption">
+        <span class="about-shape shape-a" aria-hidden="true"></span><span class="about-shape shape-b" aria-hidden="true"></span>
+        <span class="about-image-note">A MOMENT THAT<br>FEELS LIKE YOU</span>
+      </div>
+      <p>{{ story().visualCaption }}</p><span class="about-number">04 / OFF THE CV</span>
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow">04 / A LITTLE MORE HUMAN</p><h2 id="about-heading">Curiosity got<br>me <em>here.</em></h2>
+      <p class="about-lead">{{ story().introduction }}</p>
+      @for (chapter of story().chapters; track chapter.label) {
+        <div class="story-chapter"><span>{{ chapter.label }}</span><p>{{ chapter.text }}</p></div>
+      }
+      <div class="off-clock"><span>WHEN I LOG OFF</span><p>{{ story().offClock }}</p></div>
+    </div>
+  </div>
+</section>

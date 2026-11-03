@@ -1,0 +1,17 @@
+<app-site-header [name]="content.profile.name" />
+
+<main id="main">
+  <app-hero-section [profile]="content.profile" />
+  <app-proof-strip [metrics]="content.metrics" />
+<app-career-section
+    [experience]="content.experience"
+    [skillGroups]="content.skillGroups"
+    [resumeUrl]="content.profile.resumeUrl"
+  />
+  <app-project-section [projects]="content.projects" />
+  <app-testimonial-section [testimonial]="content.testimonial" />
+  <app-about-section [story]="content.about" />
+  <app-contact-section [profile]="content.profile" />
+</main>
+
+<app-site-footer [initials]="content.profile.initials" />

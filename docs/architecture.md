@@ -2,7 +2,7 @@
 
 ## Current state
 
-The app is an Angular CLI standalone application with SSR enabled. At the time these notes were written, `src/app/app.routes.ts` has no routes and the root component is still the CLI starter. There is no portfolio feature code or API integration yet.
+The app is an Angular CLI standalone application with SSR/hydration enabled. The root route renders the HomePage feature. The page is composed from standalone section components and receives typed local placeholder content through `PortfolioContentService`. The light/dark preference is managed by an SSR-safe `ThemeService`. There is no backend API, blog, admin area, or public deployment yet.
 
 ## Target structure
 
@@ -11,14 +11,15 @@ Build in small slices as the portfolio is implemented. A reasonable target is:
 ```text
 src/
   app/
-    core/                 # singleton services, runtime config, shared shell
-    layout/               # header, footer, theme control
+    core/                 # cross-feature services such as theme state
     features/
-      home/               # hero, experience, skills, selected work, about, contact
+      home/
+        components/       # page sections: header, hero, career, work, About, contact
+        data/             # editable local placeholder content
+        data-access/      # content service boundary; API implementation later
+        models/           # typed portfolio content models
       blog/               # article list and article detail routes
       admin/              # later; authenticated content management UI
-    data-access/          # API clients and mapping from API DTOs to view models
-    models/               # frontend domain types
     app.config.ts
     app.routes.ts
   environments/           # only non-secret, build-time config if needed
@@ -27,11 +28,11 @@ public/
   assets/
 ```
 
-This is a destination, not a requirement to create all folders immediately. Add a component or service when a concrete feature needs it. Keep components focused on display and user interaction; keep HTTP, caching, and data-shape handling in data-access services.
+The `home/` structure above exists now; blog and admin are future feature areas. Add components or services when a concrete feature needs them. Keep components focused on display and interaction; keep HTTP, caching, and API-shape handling in data-access services.
 
 ## Data flow
 
-The first implementation can use typed local sample data. Components should depend on a content-facing service or facade rather than importing sample constants directly. Later, replace the service implementation with HTTP calls while keeping the view models stable:
+The current implementation uses typed local sample data. The HomePage reads it through a content-facing service rather than importing sample constants directly. Later, replace or extend the service implementation with HTTP calls while keeping the view models stable:
 
 ```text
 Page component → content service → local data now / HTTP API later
@@ -54,7 +55,7 @@ The current server route configuration prerenders every route. Review it before 
 
 ## Theme behavior
 
-The current prototype has a light/dark theme concept. In Angular, keep theme state in a small service or a focused shell component. Apply the theme at the document root, persist only the preference (not user data), and respect `prefers-color-scheme` on a first visit if that is the chosen product behavior. Avoid direct browser globals during SSR; use Angular's browser/platform APIs or guard browser-only work.
+The Angular page has a light/dark theme switch. `ThemeService` applies the theme to the document root and stores only the preference in local storage. It reads browser state after rendering, so local storage and `matchMedia` are not accessed during SSR. It uses the operating-system preference when no saved choice exists.
 
 ## Admin boundary
 

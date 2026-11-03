@@ -1,6 +1,6 @@
 # Development workflow
 
-This project is intentionally being built incrementally by the portfolio owner. Use the Angular CLI and learn each feature as it is added; do not create the entire target architecture before it is needed.
+The portfolio shell is now implemented in Angular. Continue evolving it one feature at a time and review the code to build Angular familiarity before adding the blog, backend, or admin.
 
 ## Initial local setup
 
@@ -9,18 +9,18 @@ npm install
 npm start
 ```
 
-The app should be available at `http://localhost:4200/`. The first development milestone is to understand the generated root component and replace the CLI starter view with one small portfolio section.
+The app should be available at `http://localhost:4200/`. The production build can be served locally with `npm run build` followed by `npm run serve:ssr:portfolio`; the generated Node server listens on port 4000 by default.
 
 ## Working loop
 
-1. Choose one user-visible slice, such as the header or hero.
+1. Choose one user-visible slice, such as the header, hero, experience, or a project card.
 2. Decide which data that slice needs and define a small type if appropriate.
 3. Build the component/template and its responsive styles.
 4. Run the app locally and inspect desktop and mobile widths.
 5. Check keyboard access, visible focus, reduced-motion behavior, and text contrast.
 6. Build before committing a coherent milestone.
 
-Keep changes small enough that you can explain the purpose of each file. Avoid generating every planned component or service at once.
+Keep changes small enough that you can explain the purpose of each file. Blog, backend, and admin code should be added when those features begin, not prebuilt as empty placeholders.
 
 ## Angular conventions
 

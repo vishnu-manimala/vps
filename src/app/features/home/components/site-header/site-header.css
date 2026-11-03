@@ -1,0 +1,32 @@
+
+:host { display: block; }
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 10px;
+  color: var(--ink);
+}
+.brand-mark {
+  display: block;
+  width: 48px;
+  height: 27px;
+  object-fit: contain;
+}
+.brand-name {
+  color: var(--ink);
+  font: 800 .78rem/1 var(--display);
+  letter-spacing: .09em;
+  white-space: nowrap;
+}
+.primary-nav.dark-theme .nav-cta {
+  background: #5b42c5;
+  border: 1px solid #5b42c5;
+  color: #fff;
+}
+.primary-nav.dark-theme .nav-cta span { color: #fff; }
+@media (max-width: 760px) {
+  .brand-lockup { gap: 8px; }
+  .brand-mark { width: 42px; height: 24px; }
+  .brand-name { font-size: .68rem; }
+}

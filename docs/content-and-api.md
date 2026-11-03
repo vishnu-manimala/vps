@@ -1,6 +1,6 @@
 # Content model and proposed API
 
-This document describes a backend-neutral contract for future dynamic content. It does not imply that an API or database exists yet. Start with local typed sample data, then implement the API against these concepts when the backend is selected.
+This document describes the local content model and a backend-neutral contract for future dynamic content. The portfolio currently uses typed local sample data through `PortfolioContentService`; no API or database exists yet. Implement the API against these concepts after the backend is selected.
 
 ## Content principles
 

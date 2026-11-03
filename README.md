@@ -4,7 +4,7 @@ An Angular portfolio for presenting experience, skills, selected projects, and a
 
 ## Project status
 
-This repository currently contains the Angular CLI starter scaffold. The portfolio UI, content services, API integration, blog, and admin are not implemented yet. The earlier static prototype remains at the repository root (`index.html`, `styles.css`, and `script.js`); Angular development happens under `src/` and does not use those prototype files.
+The Angular home page is implemented and builds with SSR/prerendering. It includes the hero and portrait slot, experience and skills, projects, About story, contact, light/dark theme, responsive navigation, and local typed placeholder content. The API, blog routes, admin, and deployment to a public host are not implemented yet. The earlier static prototype remains at the repository root (`index.html`, `styles.css`, and `script.js`) as a reference; Angular source is under `src/`.
 
 ## Prerequisites
 
@@ -42,8 +42,15 @@ The current build is configured for server output and prerendering. Production d
 - `src/app/app.routes.server.ts` — server rendering policy for routes
 - `src/app/app.config.ts` — browser application providers
 - `src/app/app.config.server.ts` — server application providers
+- `src/app/core/theme/theme.service.ts` — SSR-safe theme preference and toggle
+- `src/app/features/home/components/` — standalone sections used by the home page
+- `src/app/features/home/models/` — typed portfolio content shapes
+- `src/app/features/home/data/portfolio-content.ts` — editable local sample content
+- `src/app/features/home/data-access/portfolio-content.service.ts` — content source boundary for future API integration
 - `src/styles.css` — global styles
 - `public/` — files copied as public assets
+
+To add a real portrait, place it under `public/assets/` and update `photoUrl` and `photoAlt` in `src/app/features/home/data/portfolio-content.ts`.
 
 See [the architecture guide](docs/architecture.md), [development workflow](docs/development-workflow.md), and [roadmap](docs/roadmap.md) before adding the next feature.
 
@@ -52,7 +59,7 @@ See [the architecture guide](docs/architecture.md), [development workflow](docs/
 - Use Angular standalone APIs and the Angular Router.
 - Keep public portfolio content separate from presentation components so local sample data can later be replaced by an API.
 - Keep public and admin routes separate. Admin authorization must be enforced by the backend, not only by hiding Angular routes.
-- Render public content in a way that supports search indexing. The current scaffold uses Angular SSR/prerendering; route rendering will need review when API-backed blog routes are added.
+- Render public content in a way that supports search indexing. The current home route is prerendered; route rendering will need review when API-backed blog routes are added.
 - Do not put credentials, private tokens, or secrets in browser code or public assets.
 
 ## Documentation
@@ -67,4 +74,4 @@ See [the architecture guide](docs/architecture.md), [development workflow](docs/
 
 ## Legacy static prototype
 
-The root `index.html`, `styles.css`, and `script.js` are the earlier standalone prototype. They are kept for reference while the Angular version is built. Do not treat them as Angular source files. `README-portfolio-notes.md` contains the prototype-specific editing checklist.
+The root `index.html`, `styles.css`, and `script.js` are the earlier standalone prototype. They are kept for reference. Do not treat them as Angular source files. `README-portfolio-notes.md` contains the prototype-specific editing checklist.
