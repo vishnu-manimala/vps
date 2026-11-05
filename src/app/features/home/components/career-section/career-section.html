@@ -2,7 +2,7 @@
   <div class="section-wrap">
     <div class="section-heading">
       <div><p class="eyebrow">01 / EXPERIENCE</p><h2 id="experience-heading">A path of<br><em>purpose.</em></h2></div>
-      <p class="section-lede">Where I’ve been, what I owned, and the difference it made. Every chapter brought new perspective and a bigger question to solve.</p>
+      <p class="section-lede">Selected responsibilities and project contributions across software, customer service, and business operations.</p>
     </div>
     <div class="experience-list">
       @for (item of experience(); track item.id) {
@@ -10,20 +10,19 @@
           <div class="experience-meta"><span>{{ item.dates }}</span><span class="experience-number">0{{ $index + 1 }}</span></div>
           <div class="experience-content">
             <h3>{{ item.title }}</h3>
-            <p class="exp-org">{{ item.organization }} <i>·</i> {{ item.location }}</p>
+            <p class="exp-org">{{ item.organization }} @if (item.location) { <i>·</i> {{ item.location }} }</p>
             <p>{{ item.summary }}</p>
-            @if (item.outcomes.length > 0) {
-              <ul>@for (outcome of item.outcomes; track outcome) { <li>{{ outcome }}</li> }</ul>
+            @if (item.highlights.length > 0) {
+              <ul>@for (highlight of item.highlights; track highlight) { <li>{{ highlight }}</li> }</ul>
             }
           </div>
           <span class="experience-arrow" aria-hidden="true">↗</span>
         </article>
       }
     </div>
-    <div class="resume-row"><span>THE FULL STORY</span>
-      @if (resumeUrl()) { <a [href]="resumeUrl()" download>Download résumé <b>↗</b></a> }
-      @else { <span>Add a résumé link when it is ready.</span> }
-    </div>
+    @if (resumeUrl()) {
+      <div class="resume-row"><span>THE FULL STORY</span><a [href]="resumeUrl()" download>Download résumé <b>↗</b></a></div>
+    }
 
     <div class="skills-panel" aria-labelledby="skills-heading">
       <div class="skills-heading"><p class="eyebrow">02 / SKILLS & EXPERIENCE</p><h3 id="skills-heading">What I know.<br><em>What I bring.</em></h3><p>Web development skills alongside hands-on experience in customer service, branch leadership, and business operations.</p></div>
@@ -31,7 +30,7 @@
         @for (group of skillGroups(); track group.id) {
           <div class="skill-row"><span>{{ group.label }}</span><div>@for (skill of group.skills; track skill) { <b>{{ skill }}</b> }</div></div>
         }
-        <small>My technical skills are growing through hands-on projects, backed by years of business and operations experience.</small>
+        <small>Technical skills developed through structured training and hands-on project work, supported by years of business and operations experience.</small>
       </div>
     </div>
   </div>

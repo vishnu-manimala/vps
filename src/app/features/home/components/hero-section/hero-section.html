@@ -1,7 +1,7 @@
 <section class="hero section-wrap" id="top" aria-labelledby="hero-title">
   <div class="hero-copy">
     <div class="availability"><span></span> {{ profile().availability }} <i>·</i> {{ profile().location }}</div>
-    <p class="hero-kicker">HELLO, I’M {{ profile().name.toUpperCase() }}</p>
+    <p class="hero-kicker hero-role">{{ profile().role }}</p>
     <h1 id="hero-title">{{ profile().headline.firstLine }}<br>{{ profile().headline.secondLine }}<br><em>{{ profile().headline.accent }}</em></h1>
     <p class="hero-intro">{{ profile().introduction }}</p>
     <div class="hero-actions">
@@ -25,7 +25,7 @@
       }
     </figure>
     <div class="portrait-label label-top"><span>01 / HUMAN FIRST</span></div>
-    <div class="portrait-label label-bottom">{{ profile().location }} <span>—</span> {{ profile().timeZone }}</div>
+    <div class="portrait-label label-bottom">{{ profile().location }}</div>
     <div class="float-card"><span class="float-card-icon" aria-hidden="true">↗</span><div><small>MY APPROACH</small><strong>Make it<br>matter.</strong></div></div>
     <span class="portrait-orbit orbit-one" aria-hidden="true"></span><span class="portrait-orbit orbit-two" aria-hidden="true"></span>
   </div>

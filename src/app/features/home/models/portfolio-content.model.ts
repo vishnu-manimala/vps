@@ -3,7 +3,6 @@ export interface PortfolioProfile {
   initials: string;
   role: string;
   location: string;
-  timeZone: string;
   availability: string;
   headline: { firstLine: string; secondLine: string; accent: string };
   introduction: string;
@@ -31,7 +30,7 @@ export interface ExperienceItem {
   organization: string;
   location: string;
   summary: string;
-  outcomes: string[];
+  highlights: string[];
 }
 
 export interface SkillGroup {
@@ -42,12 +41,14 @@ export interface SkillGroup {
 
 export interface ProjectCaseStudy {
   id: string;
+  category: 'production' | 'learning';
   title: string;
   role: string;
   industry: string;
   year: string;
   summary: string;
   outcome: string;
+  technologies: string[];
   visualTheme: 'art-orange' | 'art-lilac' | 'art-mint';
   shapeOne: string;
   shapeTwo: string;
@@ -62,8 +63,29 @@ export interface Testimonial {
 
 export interface AboutStory {
   introduction: string;
-  chapters: { label: string; text: string }[];
-  offClock: string;
+  chapters: {
+    label: string;
+    text: string;
+    photoGroups?: {
+      label: string;
+      illustrative?: boolean;
+      photos: {
+        id: string;
+        src: string | null;
+        alt: string;
+        caption: string;
+        attribution: string;
+        attributionUrl: string;
+      }[];
+    }[];
+  }[];
+  offClock?: string;
+  featuredPhoto: {
+    src: string | null;
+    alt: string;
+    attribution: string;
+    attributionUrl: string;
+  };
   visualCaption: string;
 }
 

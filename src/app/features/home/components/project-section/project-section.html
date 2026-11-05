@@ -2,22 +2,33 @@
   <div class="section-wrap">
     <div class="section-heading">
       <div><p class="eyebrow">03 / SELECTED WORK</p><h2 id="work-heading">Ideas in<br><em>practice.</em></h2></div>
-      <p class="section-lede">A few projects that show how I think, collaborate, and get to outcomes. The story behind the result is where the interesting part lives.</p>
+      <p class="section-lede">Production backend work from my time at 369 Degree Group, followed by projects I built while learning at Brototype.</p>
     </div>
-    <div class="project-grid">
-      @for (project of projects(); track project.id) {
-        <article class="project-card" [class.project-feature]="project.featured">
-          <a class="project-art" [class]="project.visualTheme" href="#contact" [attr.aria-label]="'Contact me about ' + project.title">
-            <span class="art-index">CASE STUDY 0{{ $index + 1 }} <i>· {{ project.year }}</i></span>
-            <span class="art-shape" [class]="'art-shape ' + project.shapeOne" aria-hidden="true"></span>
-            <span class="art-shape" [class]="'art-shape ' + project.shapeTwo" aria-hidden="true"></span>
-            <span class="art-copy">{{ project.title }}</span><span class="art-arrow" aria-hidden="true">↗</span>
-          </a>
-          <div class="project-meta"><div><span>{{ project.industry }} / {{ project.role }}</span><h3>{{ project.title }}</h3></div><b>{{ project.outcome }}</b></div>
-          <p>{{ project.summary }}</p>
-        </article>
+    @for (group of projectGroups(); track group.id) {
+      <section class="project-group" [attr.aria-labelledby]="'project-group-' + group.id">
+        <div class="project-group-heading">
+          <div><p class="eyebrow">{{ group.eyebrow }}</p><h3 [id]="'project-group-' + group.id">{{ group.title }}</h3></div>
+          <p>{{ group.description }}</p>
+        </div>
+        <div class="project-grid">
+          @for (project of group.projects; track project.id) {
+            <article class="project-card" [class.project-feature]="project.featured">
+              <div class="project-art" [class]="project.visualTheme" aria-hidden="true">
+                <span class="art-index">{{ project.industry }} <i>· {{ project.year }}</i></span>
+                <span class="art-shape" [class]="'art-shape ' + project.shapeOne" aria-hidden="true"></span>
+                <span class="art-shape" [class]="'art-shape ' + project.shapeTwo" aria-hidden="true"></span>
+                <span class="art-copy">{{ project.title }}</span>
+              </div>
+              <div class="project-meta"><div><span>{{ project.role }}</span><h4>{{ project.title }}</h4></div><b>{{ project.outcome }}</b></div>
+              <p>{{ project.summary }}</p>
+              <ul class="project-tech" [attr.aria-label]="'Technologies used for ' + project.title">
+                @for (technology of project.technologies; track technology) { <li>{{ technology }}</li> }
+              </ul>
+            </article>
+          }
+        </div>
+      </section>
       }
-    </div>
-    <div class="case-study-tip"><span>CASE STUDY TIP</span><p>Include context, your specific contribution, collaboration, and evidence of results. Share confidential work only with permission.</p></div>
+    <div class="case-study-tip"><span>PROJECT NOTES</span><p>Some production services are no longer online. Project details here describe my application backend work; they do not imply that I built blockchain infrastructure or smart contracts.</p></div>
   </div>
 </section>
