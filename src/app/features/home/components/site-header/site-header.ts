@@ -8,6 +8,7 @@ import { ThemeService } from '../../../../core/theme/theme.service';
 })
 export class SiteHeader {
   readonly name = input.required<string>();
+  readonly whatsappUrl = input.required<string>();
   protected readonly theme = inject(ThemeService);
   protected readonly menuOpen = signal(false);
 

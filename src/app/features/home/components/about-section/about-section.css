@@ -1,2 +1,6 @@
 
 :host { display: block; }
+
+.about-featured-photo {
+  object-position: 12% center;
+}

@@ -21,6 +21,6 @@
     <a href="#experience" (click)="closeMenu()">Experience</a>
     <a href="#work" (click)="closeMenu()">Selected work</a>
     <a href="#about" (click)="closeMenu()">About</a>
-    <a class="nav-cta" href="#contact" (click)="closeMenu()">Let’s talk <span>↗</span></a>
+    <a class="nav-cta" [href]="whatsappUrl()" target="_blank" rel="noopener noreferrer" (click)="closeMenu()">Let’s talk <span>↗</span></a>
   </nav>
 </header>

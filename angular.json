@@ -82,6 +82,9 @@
               ],
               "outputHashing": "all"
             },
+            "pages": {
+              "outputMode": "static"
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,

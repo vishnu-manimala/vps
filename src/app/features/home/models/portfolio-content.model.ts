@@ -9,6 +9,7 @@ export interface PortfolioProfile {
   photoUrl: string;
   photoAlt: string;
   email: string;
+  whatsappUrl: string;
   resumeUrl?: string;
   socialLinks: SocialLink[];
 }

@@ -31,7 +31,9 @@ Open `http://localhost:4200/`. The development server recompiles when source fil
 | `npm run watch` | Rebuild continuously in development mode |
 | `npm run serve:ssr:portfolio` | Run the built server-rendered app after a production build |
 
-The current build is configured for server output and prerendering. Production deployment therefore needs a compatible Node.js runtime unless the rendering configuration is deliberately changed.
+The default `npm run build` keeps Angular's server output and prerendering enabled, which is useful for learning and running the SSR server locally. For Cloudflare Pages, use the separate static build configuration below; the Pages deployment serves the generated browser files without a continuously running Node.js server.
+
+For a static Cloudflare Pages deployment, use `npm run build:pages`. The deployment settings, custom-domain steps, and future subdomain plan are in [the Cloudflare Pages deployment guide](docs/deployment-cloudflare-pages.md). This static build does not replace the default SSR build or the local `serve:ssr:portfolio` workflow.
 
 ## Where to work
 
@@ -69,6 +71,7 @@ See [the architecture guide](docs/architecture.md), [development workflow](docs/
 - [Content authoring checklist](docs/content-authoring.md)
 - [Development workflow](docs/development-workflow.md)
 - [Production readiness](docs/production-readiness.md)
+- [Cloudflare Pages deployment](docs/deployment-cloudflare-pages.md)
 - [Roadmap](docs/roadmap.md)
 - [ADR 0001: Angular and rendering](docs/decisions/0001-angular-and-rendering.md)
 

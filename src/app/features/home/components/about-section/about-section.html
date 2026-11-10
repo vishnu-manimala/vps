@@ -13,7 +13,7 @@
           </div>
         }
       </div>
-      <p>{{ story().visualCaption }} · <a [href]="story().featuredPhoto.attributionUrl" target="_blank" rel="noopener noreferrer">{{ story().featuredPhoto.attribution }}</a></p><span class="about-number">04 / OFF THE CV</span>
+      <p>{{ story().visualCaption }}@if (story().featuredPhoto.attributionUrl) { · <a [href]="story().featuredPhoto.attributionUrl" target="_blank" rel="noopener noreferrer">{{ story().featuredPhoto.attribution }}</a> }</p><span class="about-number">04 / OFF THE CV</span>
     </div>
     <div class="about-copy">
       <p class="eyebrow">04 / A LITTLE MORE HUMAN</p><h2 id="about-heading">Curiosity got<br>me <em>here.</em></h2>
@@ -41,7 +41,7 @@
                             </div>
                           }
                           <figcaption>{{ photo.caption }}</figcaption>
-                          <a class="story-photo-credit" [href]="photo.attributionUrl" target="_blank" rel="noopener noreferrer">{{ photo.attribution }}</a>
+                          @if (photo.attributionUrl) { <a class="story-photo-credit" [href]="photo.attributionUrl" target="_blank" rel="noopener noreferrer">{{ photo.attribution }}</a> }
                         </figure>
                       }
                     </div>
