@@ -1,28 +1,28 @@
-# Deploying to Cloudflare Pages
+# Cloudflare Pages deployment
 
-The portfolio is configured for a static production build. Its current routes are prerendered, so the deployed site does not need an always-running Node server.
+## Current deployment
 
-## Build settings
-
-Connect the GitHub repository `vishnu-manimala/vps` to a new Cloudflare Pages project using Git integration, then use:
+The Angular portfolio is connected to Cloudflare Pages through the GitHub repository `vishnu-manimala/vps`. The production branch is `main`; new commits to that branch trigger a build and deployment.
 
 | Setting | Value |
 | --- | --- |
+| Cloudflare Pages project | `vps` |
 | Production branch | `main` |
 | Build command | `npm run build:pages` |
 | Build output directory | `dist/portfolio/browser` |
-| Environment variable | `NODE_VERSION=24.21.0` |
+| Build Node.js version | `24.21.0` (`NODE_VERSION`) |
+| Cloudflare preview URL | `https://vps-2c4.pages.dev` |
 
-The `pages` Angular build configuration selects static output while preserving the default SSR build used for local learning. `wrangler.jsonc` records the Pages project name and output directory.
-
-After connecting the repository, Cloudflare Pages automatically builds and deploys commits pushed to the production branch. The deployment is served from a free `*.pages.dev` URL before a custom domain is attached.
+The `pages` Angular build configuration selects static output while preserving the default SSR build used for local learning. Run `npm run build:pages` to build the static site locally.
 
 ## Custom domain
 
-Add `vishnumanimal.online` in the Pages project under **Custom domains**. Cloudflare requires the domain to be added as a zone and its nameservers to point to Cloudflare for an apex domain. The domain can remain registered at its current registrar; only DNS hosting changes. Before changing nameservers, copy any existing DNS records needed for email or other services.
+The domain registered at Hostinger and present in Cloudflare is `vishnumanimala.online`. Its nameservers already point to Cloudflare (`eva.ns.cloudflare.com` and `keenan.ns.cloudflare.com`), and the Cloudflare zone is Active.
 
-Optionally add `www.vishnumanimal.online` as a second hostname and redirect it to the apex domain.
+The Pages project now has `vishnumanimala.online` attached as a custom domain. Cloudflare showed the DNS record as a proxied CNAME from `vishnumanimala.online` to `vps-2c4.pages.dev`; the existing record already pointed to that Pages hostname. The custom-domain status was **Initializing** when configured, and Cloudflare indicated DNS and site availability can take up to 48 hours to update.
+
+If the domain is still unavailable after that period, check the Pages project's **Custom domains** status and Cloudflare's DNS record for the root hostname. Do not change Hostinger nameservers; DNS is already managed by Cloudflare.
 
 ## Future project subdomains
 
-Keep the portfolio at `vishnumanimal.online`. When Ayra Online and TripSync are ready to publish, host each app separately and point subdomains such as `ayra.vishnumanimal.online` and `tripsync.vishnumanimal.online` to their respective hosts. Add links from the portfolio once those deployments are live. Their DNS records can be configured individually without changing the portfolio URL.
+Keep the portfolio at `vishnumanimala.online`. When Ayra Online and TripSync are ready to publish, host each app separately and point subdomains such as `ayra.vishnumanimala.online` and `tripsync.vishnumanimala.online` to their respective hosts. Add links from the portfolio once those deployments are live.
